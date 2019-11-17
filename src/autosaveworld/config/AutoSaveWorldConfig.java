@@ -180,39 +180,6 @@ public class AutoSaveWorldConfig implements Config {
 	public int backupGDriveMaxNumberOfBackups = 4;
 	@ConfigOption(path = "backup.googledrive.zip")
 	public boolean backupGDriveZipEnabled = false;
-	// purge
-	@ConfigOption(path = "purge.enabled")
-	public boolean purgeEnabled = false;
-	@ConfigOption(path = "purge.interval")
-	public int purgeInterval = 60 * 60 * 24;
-	@ConfigOption(path = "purge.awaytime")
-	public long purgeAwayTime = 60 * 60 * 24 * 30;
-	@ConfigOption(path = "purge.ignorednicks", transform = ListClone.class)
-	public List<String> purgeIgnoredNicks = new ArrayList<>();
-	@ConfigOption(path = "purge.ignoreduuids", transform = ListClone.class)
-	public List<String> purgeIgnoredUUIDs = new ArrayList<>();
-	@ConfigOption(path = "purge.broadcast")
-	public boolean purgeBroadcast = true;
-	@ConfigOption(path = "purge.wg.enabled")
-	public boolean purgeWG = true;
-	@ConfigOption(path = "purge.wg.regenpurgedregion")
-	public boolean purgeWGRegenRg = false;
-	@ConfigOption(path = "purge.wg.noregenoverlapregion")
-	public boolean purgeWGNoregenOverlap = true;
-	@ConfigOption(path = "purge.lwc.enabled")
-	public boolean purgeLWC = true;
-	@ConfigOption(path = "purge.lwc.deletepurgedblocks")
-	public boolean purgeLWCDelProtectedBlocks = false;
-	@ConfigOption(path = "purge.permissions.enabled")
-	public boolean purgePerms = true;
-	@ConfigOption(path = "purge.permissions.savecmd")
-	public String purgePermsSaveCMD = "mansave force";
-	@ConfigOption(path = "purge.mywarp.enabled")
-	public boolean purgeMyWarp = true;
-	@ConfigOption(path = "purge.essentials.enabled")
-	public boolean purgeEssentials = true;
-	@ConfigOption(path = "purge.dat.enabled")
-	public boolean purgeDat = true;
 	// restart
 	@ConfigOption(path = "restart.juststop")
 	public boolean restartJustStop = false;
@@ -249,21 +216,6 @@ public class AutoSaveWorldConfig implements Config {
 	public boolean ccIntervalsModeEnabled = false;
 	@ConfigOption(path = "consolecommand.intervalmode.intervals", transform = ConfSectIntHashMap.class)
 	public Map<Integer, List<String>> ccIntervalsModeCommands = new HashMap<>();
-	// worldregen
-	@ConfigOption(path = "worldregen.newseed")
-	public boolean worldRegenRemoveSeedData = false;
-	@ConfigOption(path = "worldregen.preserveradius")
-	public int worldRegenPreserveRadius = 0;
-	@ConfigOption(path = "worldregen.savewg")
-	public boolean worldRegenSaveWG = true;
-	@ConfigOption(path = "worldregen.savefactions")
-	public boolean worldRegenSaveFactions = true;
-	@ConfigOption(path = "worldregen.savegp")
-	public boolean worldRegenSaveGP = true;
-	@ConfigOption(path = "worldregen.savetowny")
-	public boolean worldregenSaveTowny = true;
-	@ConfigOption(path = "worldregen.savepstones")
-	public boolean worldregenSavePStones = true;
 	// network watcher
 	@ConfigOption(path = "networkwatcher.mainthreadnetaccess.warn")
 	public boolean networkWatcherWarnMainThreadAcc = true;

@@ -33,16 +33,10 @@ public class AutoSaveWorldConfigMSG implements Config {
 	public String messageBackupBroadcastPre = "&9AutoBackuping";
 	@ConfigOption(path = "broadcastbackup.post")
 	public String messageBackupBroadcastPost = "&9AutoBackup Complete";
-	@ConfigOption(path = "broadcastpurge.pre")
-	public String messagePurgeBroadcastPre = "&9AutoPurging";
-	@ConfigOption(path = "broadcastpurge.post")
-	public String messagePurgeBroadcastPost = "&9AutoPurge Complete";
 	@ConfigOption(path = "autorestart.restarting")
 	public String messageAutoRestart = "&9Server is restarting";
 	@ConfigOption(path = "autorestart.countdown")
 	public String messageAutoRestartCountdown = "&9Server will restart in {SECONDS} seconds";
-	@ConfigOption(path = "worldregen.kickmessage")
-	public String messageWorldRegenKick = "&9Server is regenerating map, please come back later";
 	@ConfigOption(path = "insufficentpermissions")
 	public String messageInsufficientPermissions = "&cYou do not have access to that command.";
 

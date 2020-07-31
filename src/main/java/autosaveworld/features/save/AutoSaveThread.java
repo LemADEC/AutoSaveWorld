@@ -132,7 +132,25 @@ public class AutoSaveThread extends IntervalTaskThread {
 			try {
 				Object worldserver = getNMSWorld(world);
 				// invoke saveLevel method which waits for all chunks to save and than dumps RegionFileCache
-				ReflectionUtils.getMethod(worldserver.getClass(), NMSNames.getSaveLevelMethodName(), 0).invoke(worldserver);
+				/* up to 1.14.4
+				Object dataManager = ReflectionUtils.getMethod(worldserver.getClass(), "getDataManager", 0).invoke(worldserver);
+				Object worldData = ReflectionUtils.getMethod(worldserver.getClass(), "getWorldData", 0).invoke(worldserver);
+				Object server = ReflectionUtils.getField(worldserver.getClass(), "server").get(worldserver);
+				Object playerList = ReflectionUtils.getMethod(server.getClass(), "getPlayerList", 0).invoke(server);
+				Object r = ReflectionUtils.getMethod(playerList.getClass(), "r", 0).invoke(playerList);
+				ReflectionUtils.getMethod(dataManager.getClass(), "saveWorldData", 2).invoke(dataManager, worldData, r);
+				*/
+				
+				// Navigate to the RegionFileCache class
+				Object chunkProvider = ReflectionUtils.getMethod(worldserver.getClass(), "getChunkProvider", 0).invoke(worldserver);
+				Object playerChunkMap = ReflectionUtils.getField(chunkProvider.getClass(), "playerChunkMap").get(chunkProvider);
+				Object cache = ReflectionUtils.getField(playerChunkMap.getClass(), "cache").get(playerChunkMap);
+				
+				// Waits for all chunks to save and then dumps RegionFileCache
+				while ((int) ReflectionUtils.getMethod(cache.getClass(), "size", 0).invoke(cache) > 0) {
+					Object popped = ReflectionUtils.getMethod(cache.getClass(), "removeLast", 0).invoke(cache);
+					ReflectionUtils.getMethod(popped.getClass(), "close", 0).invoke(popped);
+				}
 			} catch (Exception e) {
 				MessageLogger.exception("Could not dump RegionFileCache", e);
 			}

@@ -45,7 +45,7 @@ public class LocalFSBackupOperations {
 		MessageLogger.debug("Backuping world " + world.getWorldFolder().getName());
 		try {
 			File fromfolder = world.getWorldFolder().getAbsoluteFile();
-			String destfolder = extpath + File.separator + "backups" + File.separator + "worlds" + File.separator + world.getWorldFolder().getName();
+			String destfolder = extpath + File.separator + "backups" + File.separator + "worlds" + File.separator + world.getName();
 			backupFolder(fromfolder, destfolder, maxBackupsCount, latestbackuptimestamp);
 		} catch (Exception e) {
 			e.printStackTrace();

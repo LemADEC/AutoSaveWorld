@@ -41,18 +41,22 @@ public class AutoSaveThread extends IntervalTaskThread {
 
 	@Override
 	public void onStart() {
+		if (!AutoSaveWorld.getInstance().getMainConfig().saveEnabled) {
+			return;
+		}
 		//disable bukkit built-in autosave
 		try {
 			Server server = Bukkit.getServer();
 			Object minecraftserver = ReflectionUtils.getField(server.getClass(), "console").get(server);
 			ReflectionUtils.getField(minecraftserver.getClass(), "autosavePeriod").set(minecraftserver, 0);
 		} catch (Throwable t) {
+			t.printStackTrace();
 		}
 	}
 
 	@Override
 	public boolean isEnabled() {
-		return true;
+		return AutoSaveWorld.getInstance().getMainConfig().saveEnabled;
 	}
 
 	@Override
